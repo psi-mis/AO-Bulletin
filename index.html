@@ -1,0 +1,367 @@
+
+<html>
+<head>
+<title>Angola MOH Bulletin</title>
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script type="text/javascript" src="../api/documents/rq8ybrq3uP6/data"></script>
+<script type="text/javascript" src="../dhis-web-pivot/reporttable.js"></script>
+<script type="text/javascript" src="../dhis-web-maps/map.js"></script>
+<!--
+<script type="text/javascript" src="../dhis-web-commons/javascripts/ext/ext-all.js"></script>
+-->
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script> 
+
+<script type="text/javascript" src="../dhis-web-commons/javascripts/openlayers/OpenLayers.js"></script>
+<!--
+<script type="text/javascript" src="../dhis-web-mapping/map.js"></script>
+<script type="text/javascript" src="./js/mainFunctions.js"></script>. -->
+
+<!--
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.util.js"></script>
+<script type="text/javascript" src="../dhis-web-mapping/extjs/ext-all.js"></script>
+<script type="text/javascript" src="../dhis-web-mapping/map.js"></script>
+
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.ss.js"></script>
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.ls.js"></script>
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.idb.js"></script>
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.memory.js"></script>
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.js"></script>
+
+-->
+
+
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.util.js"></script>
+<!--<script type="text/javascript" src="../../../dhis-web-mapping/extjs/ext-all.js"></script>-->
+<script type="text/javascript" src="../api/documents/MwVKOZ1o043/data"></script>
+<!--<script type="text/javascript" src="../../../dhis-web-mapping/map.js"></script>-->
+<script type="text/javascript" src="../api/documents/wB6FTdIZYif/data"></script>
+
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.ss.js"></script>
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.ls.js"></script>
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.idb.js"></script>
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.memory.js"></script>
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
+<script type="text/javascript" src="js/main.js"></script>
+
+</head>
+<body>
+
+<!-- main body -->
+	<div class="d-print-none container-fluid report-dimension">
+			<div class="row align-items-start">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<h3 class="card-title">Choose Report Options</h3>
+							<form>
+								<div class="form-row">
+									<div class="form-group col">
+										<label for="startMonth">Select Month</label>
+										<select name="startMonth-input" id="startMonth-input" class="form-control" >
+											<option value="01">Janeiro</option>
+											<option value="02">Fevereiro</option>
+											<option value="03">Março</option>
+											<option value="04">Abril</option>
+											<option value="05">Maio</option>
+											<option value="06">Junho</option>
+											<option value="07">Julho</option>
+											<option value="08">Agosto</option>
+											<option value="09">Setembro</option>
+											<option value="10">Outubro</option>
+											<option value="11">Novembro</option>
+											<option value="12">Dezembro</option>
+										</select>
+									</div>
+									<div class="form-group col">
+										<label for="startYear">Select Year</label>
+										<select name="startYear" id="startYear" class="form-control">
+										</select>
+									</div>
+									<div class="form-group col">
+										<label for="province">Select Province</label>
+										<select name="province-select" id="province-select" class="form-control">
+											<!--
+											<option value="Pfy7gorG7pR">---Angola---</option>
+											<option value="Pu5Tzt9z1ak">Província de Zaire</option>
+											<option value="BIfhhZKD1Qv">Província de Lunda-Norte</option>
+											<option value="q4ZAkSiLdsd">Província de Lunda-Sul</option>
+											<option value="H2V3Bstv3Fc">Província de Uíge</option>
+											<option value="yRqJG7DoimT">Província de Cuanza-Norte</option>
+											<option value="TFqReCyXfvb">Província de Malange</option>
+											<option value="Pgm9VeU7yuj">Província de Namibe</option>
+											-->
+										</select>
+									</div>
+								</div>
+								<!--
+								<div class="form-group col">
+									<label for="Display Settings">Display Settings</label>
+									<label><input type="checkbox" name="show cover page" value="1">Show Cover Page</label>
+								</div>
+								-->
+							</form>
+							<div class=float-right>
+								<div class=row>
+									<div class="col">
+										<button id="genReportButton" class="btn btn-primary">Generate Report</button>
+									</div>
+									<div>
+										<button id="printButton" class="btn btn-primary" value="Print" onclick="window.print()">Print</button>
+									</div>		
+								</div>	
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+
+	<div id="reportDiv" class="container-fluid report-body">
+		<!-- Add the prgress bar 
+		<div class="progress progress-striped active">
+			<div class="progress-bar"></div>
+		</div>-->
+
+
+		<div id="report-cover-page">
+		<div class="row">
+			<div class="col align-self-start" style="padding-top: 40px;">
+				<h2 class="header-cover-page"><em><u>Boletim Informativo Mensal</u></em></h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col align-self-center text-center" id="header-logo">
+				<img src="../api/documents/h6hHexSRlus/data" style="width: 162.51968504px;height: 158.03149606px;">
+				<p class="header-cover-page lead" style="padding-top: 10px">
+					REPÚBLICA DE ANGOLA </br>
+					MINISTÉRIO DA SAÚDE </br>
+					DIRECÇÃO NACIONAL DE SAÚDE PÚBLICA</br>
+					PROGRAMA NACIONAL DE CONTROLO DA MALÁRIA</br>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col align-self-center text-center">
+				<h1 id="report-title" class="header-cover-page">Manuseio de Casos de Malária</h1>	
+			</div>
+		</div>
+		<div class="row">
+			<div class="col align-self-center text-center">
+				<h3 class="header-cover-page">Publicado pelo Programa Nacional de Controlo da Malária</h3>
+			<!--	<p class="header-cover-page">(Registrado como um boletim na ...)</p> -->
+			</div>
+		</div>
+		<div class="row" style="padding-top: 20px;">
+			<div class="col border border-dark border-right-0 border-left-0 pt-1 pb-1 border-1">
+				<p id="report-dimension" class="header-cover-page" style="text-align: center;">Março 2020</p>
+			</div>
+		</div>
+
+		<div id="container">
+			<h1 id="about-this-title" class="header-cover-page">Sobre este documento</h1>
+			<p id="about-this" class="lead header-cover-page">
+				O Ministério da Saúde (MINSA), em colaboração com o projeto Saúde para Todos, está a implementar uma ferramenta de supervisão digital para malária, em unidades de saúde de seis províncias com alta incidência de malária em Angola: Cuanza Norte, Lunda Norte, Lunda Sul, Malanje, Uíge e Zaire. A ferramenta digital usa listas de verificação, alinhadas aos padrões médicos de Angola para avaliar a qualidade dos cuidados prestados em gestão de casos de malária, a disponibilidade de insumos e gestão de dados nas unidades sanitárias. Isso permite dar feedback imediato aos provedores de saúde, de acordo com o seu desempenho durante a avaliação e desenvolver planos de treinamento e supervisão para provedores e unidades de saúde com menor desempenho, priorizando áreas especificas onde precisam melhorar. A informação também poderá ser mostrada em tempo real na plataforma de DHIS2 do MINSA, para visualização imediata a nível provincial e central. A apresentação a seguir é um resumo de indicadores chave do mês anterior a edição deste boletim, com o intuito de mostrar em poucas tabelas/gráficos o nível de desempenho no manejo de casos de malária e tomar ações pertinentes. Uma lista mais detalhada de indicadores, poderá ser em breve consultado direitamente na plataforma DHIS2, com acesso desde qualquer sítio com internet.
+			</p>
+			
+		</div>
+
+		<div class="row w-100" id="footer">
+			<div class="col">
+				<img src="../api/documents/H7MAbh2jHMm/data" style="width: 289.51181102px;height: 72.188976378px;">
+			</div>
+		
+			<div class="col">
+				<div style="width: 210px !important"></div>
+				<!--<img src="../api/documents/HUe4n63MxwP/data" style="width: 50px;height: 50px;">-->
+			</div>
+		
+			<div class="col border-right-0">
+				<img src="../api/documents/hrzYTrT52QU/data" style="width: 204.09448819px;height: 72.188976378px;">
+			</div>
+		</div>
+
+		</div>
+
+
+		<p style="page-break-after: always;"></p>
+		<!-- A new page --->
+
+		<!-- begin with the map -->
+
+		<div class="section">
+			<div class="section-title border border-dark border-right-0 border-left-0 pt-1  pb-1 border-2">
+				<h3 class="header-cover-page" id="section5"></h3>
+			</div>
+			<div id="malQoCMap" style="width:930px;height:800px;"></div> <!-- style="width:800px;height:357px"; -->
+			<p class="lead2 header-cover-page">Nota: Aos municípios em brancos, não foram feitas nenhuma supervisão em TDR ou o guião ainda não foi enviado.</p>
+		</div>
+
+		<div class="section" style="width:930px;height:400px;">
+			<div class="section-title border border-dark border-right-0 border-left-0 pt-1 pb-1 border-2">
+				<h3 class="header-cover-page" id="section1"></h3>
+			</div>
+			<div id="reportTable1"></div>
+			<p class="lead2 header-cover-page">Nota:  A tabela de número de provedores de saúde, temos de ter atenção na possibilidade de termos duplicação de provedores, devido ao facto de não termos a opção de escolha do nome do provedor, os nomes dos provedores são escritos manualmente em cada supervisão feita.</p>
+		</div>
+		
+		<!-- A new page --->
+		<p style="page-break-after: always;"></p>
+
+		<div class="section">
+			<div class="section-title border border-dark border-right-0 border-left-0 pt-1 pb-1 border-2">
+				<h3 class="header-cover-page" id="section2"></h3>
+			</div>
+			<div class="row">
+				<div class="clearfix">
+					<div id="chart1" class="col-8"></div>
+				</div>
+				<div id="reportTable4" class="col-4" ></div>
+			</div>
+		</div>
+
+		<div class="section">
+			<div class="section-title border border-dark border-right-0 border-left-0 pt-1 pb-1 border-2">
+				<h3 class="header-cover-page" id="section3"></h3>
+			</div>
+			<div id="reportTable2"></div>
+			<div class="hnqis-tableLegend col-4">
+				<table>
+					<thead>
+						<tr>
+						<th colspan="2" scope="col">Legenda Tabela</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>>= 80</td>
+							<td bgcolor="#6FE64C" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>= 60 - 79</td>
+							<td bgcolor="#FEFF7F" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>= 0-59</td>
+							<td bgcolor="#EA3424" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>Guião não preenchido/Não enviado</td>
+							<td></td>
+						</tr>
+					</tbody>			
+				</table>
+			</div>
+		</div>
+
+		<!-- A new page --->
+		<p style="page-break-after: always;"></p>
+
+		<div class="section">
+			<div class="section-title border border-dark border-right-0 border-left-0 pt-1 pb-1 border-2">
+				<h3 class="header-cover-page" id="section4"></h3>
+			</div>
+			<div id="reportTable3"></div>
+			<div class="hnqis-tableLegend col-4">
+				<table>
+					<thead>
+						<tr>
+						<th colspan="2" scope="col">Legenda Tabela</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>>= 80</td>
+							<td bgcolor="#6FE64C" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>= 60 - 79</td>
+							<td bgcolor="#FEFF7F" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>= 0-59</td>
+							<td bgcolor="#EA3424" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>Guião não preenchido/Não enviado</td>
+							<td></td>
+						</tr>
+					</tbody>			
+				</table>
+			</div> <!--
+			<div id="totalSupervisions"></div>	-->
+		</div>
+		
+
+	</div>
+
+<!--	
+			
+<div class="div.page-layout"></div>
+-->
+
+<!--
+
+		<h2 class="header-cover-page" id="report-name">Boletim Informativo Mensal</h2>
+		<div id="header-logo">
+			<img src="./img/angola_logo.png" align="middle" style="width: 128px;height: 128px;">
+			<p class="header-cover-page">
+			REPÚBLICA DE ANGOLA <br>
+			MINISTÉRIO DA SAÚDE <br>
+			DIRECÇÃO NACIONAL DE SAÚDE PÚBLICA <br>
+			PROGRAMA NACIONAL DE CONTROLO DAMALÁRIA
+			</p>
+		</div>
+		<div id="header-title">
+			<h1 class="header-cover-page" id="report-title">Manuseio de Casos de Malária</h1>
+			<h3 class="header-cover-page" id="report-subtitle">Published by Authority of the Republic of Angola</h3>
+			<p class="header-cover-page">(Registered as a newsletter at the ...)</p>
+		</div>
+		<div id="report-subtitle-main">
+			<p id="report-dimension" class="header-cover-page" style="text-align: center;">Março 2020</p>
+		</div>
+		
+		<div id="container">
+				
+			
+		</div>
+
+
+		
+		<div id="footer">
+			<div id="footer-logo">
+				<img src="./img/usaid_logo.png" align="left" style="width: 300px;height: 50px;">
+				<img src="./img/psi-angola.jpeg" align="middle" style="width: 50px;height: 50px;padding-left: 20%;">
+				<img src="./img/saude_logo.png" align="right" style="width: 200px;height: 50px;">
+			</div>
+			</div>
+	</div>
+
+-->
+
+		
+	
+
+
+<!--
+	<footer id="footer" style="width: 210mm">
+		<div id="footer-logo">
+			<img src="./img/usaid_logo.png" align="left" style="width: 300px;height: 50px;">
+
+			<img src="./img/psi-angola.jpeg" align="middle" style="width: 50px;height: 50px;padding-left: 20%;">
+
+			<img src="./img/saude_logo.png" align="right" style="width: 200px;height: 50px;">
+		</div>
+	</footer>
+
+-->
+
+</body>
+</html>
+
+
+

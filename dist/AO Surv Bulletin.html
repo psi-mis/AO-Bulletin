@@ -1,0 +1,1098 @@
+
+<!-- bootsrap.js, jquery, ... -->
+<title>Angola MOH Bulletin</title>
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
+<!---
+<script type="text/javascript" src="../dhis-web-visualizer/chart.js"></script> 
+-->
+<script type="text/javascript" src="../api/documents/rq8ybrq3uP6/data"></script>
+<script type="text/javascript" src="../dhis-web-pivot/reporttable.js"></script>
+<script type="text/javascript" src="../dhis-web-maps/map.js"></script>
+<!--
+<script type="text/javascript" src="../dhis-web-commons/javascripts/ext/ext-all.js"></script>
+-->
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script> 
+
+<script type="text/javascript" src="../dhis-web-commons/javascripts/openlayers/OpenLayers.js"></script>
+<!--
+<script type="text/javascript" src="../dhis-web-mapping/map.js"></script>
+<script type="text/javascript" src="./js/mainFunctions.js"></script>. -->
+
+<!--
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.util.js"></script>
+<script type="text/javascript" src="../dhis-web-mapping/extjs/ext-all.js"></script>
+<script type="text/javascript" src="../dhis-web-mapping/map.js"></script>
+
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.ss.js"></script>
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.ls.js"></script>
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.idb.js"></script>
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.memory.js"></script>
+<script type="text/javascript" src="../dhis-web-commons/javascripts/dhis2/dhis2.storage.js"></script>
+
+-->
+
+
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.util.js"></script>
+<!--<script type="text/javascript" src="../../../dhis-web-mapping/extjs/ext-all.js"></script>-->
+<script type="text/javascript" src="../api/documents/MwVKOZ1o043/data"></script>
+<!--<script type="text/javascript" src="../../../dhis-web-mapping/map.js"></script>-->
+<script type="text/javascript" src="../api/documents/wB6FTdIZYif/data"></script>
+
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.ss.js"></script>
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.ls.js"></script>
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.idb.js"></script>
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.memory.js"></script>
+<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.js"></script>
+
+
+<!-- styling -->
+<style type="text/css">
+	.border-1 {
+	border-width:3px !important;
+	border-bottom: 4px double  #000000 !important;
+	border-top: 4px double #000000 !important;
+	/*padding-top: 40px;*/
+}
+
+.border-2 {
+	border-width: 1px !important;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	margin-bottom: 25px;
+
+}
+
+.report-dimension{
+	width: 100%;
+	padding-right: 40px;
+	padding-left: 40px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.report-body{
+	width: 100%;
+	padding-right: 25%;
+	padding-left: 15%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+@media print{
+	.report-body{
+		padding-left: 0% !important;
+		padding-right: 0% !important;
+		height: 297mm !important;
+		width: 240mm !important;
+	}
+
+	td {
+		-webkit-print-color-adjust: exact; 
+	}
+
+}
+
+
+@media screen{
+	#report-cover-page{
+		display: none;
+	}
+}
+
+
+#header-logo {
+	text-align: center;
+	padding: 40px;
+
+}
+
+#report-title {
+	/*font-size: 69.049499999px;*/
+	font-size: 60.04949999999px;
+	font-weight: bolder;
+	font-family: Arial;
+
+}
+
+#about-this {
+	font-family: Arial;
+	margin-right: 40px;
+	margin-left: 40px;
+	text-align: justify;
+}
+
+#about-this-title {
+	/*font-family: Arial;*/
+	text-align: center;
+	font-weight: bold;
+}
+
+
+#report-dimension {
+	font-size: 1.5em;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 210mm;
+	/**height: 2.5rem;*/
+	box-sizing: content-box;
+
+
+}
+
+.section
+{
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 50px;
+	margin-top: 50px; 
+	padding-bottom: 15px;
+	width: 930px;
+	font-size: 15px;
+	padding-top: 15px;
+}
+
+#container {
+	/*padding-top: 200px; */
+	padding-top: 40px;
+}
+
+/*
+#header-title {
+	text-align: center;
+}
+
+
+
+/*
+#report-name {
+	text-decoration: underline;
+	font-style: italic;
+	/*padding-left: 40px;*/
+	/*padding-top: 10px;
+}
+
+*/
+		
+
+/*
+#report-subtitle {
+	padding-top: 0px;
+}
+
+#report-subtitle-main {
+	border-bottom: 4px double  #000000;
+	border-top: 4px double #000000;
+	padding: 10px 0px;
+
+
+}
+*/
+
+
+
+.div.page-layout {
+	height: 100%;
+	width: 210mm;
+	padding-left: 25%;
+	padding-right: 25%;
+	background-color: white;
+}
+
+
+
+
+.header-cover-page{
+	color: black !important;
+}
+
+.hnqis-tableLegend {
+	padding-top: 25px;
+}
+
+p {
+	font-family: Arial;
+}
+
+h1 {
+	font-family: Arial;
+}
+
+h2 {
+	font-family: Arial;
+}
+
+h3 {
+	font-family: Arial;
+}
+
+.lead {
+	font-size: 1.25rem !important;
+}
+
+.lead2 {
+	font-size: 0.85rem !important;
+}
+
+
+
+.progress {height:18px}
+.progress-bar {width:0}
+.progress-bar {background-color: #5fb1e2}
+
+
+
+</style>
+
+<script type="text/javascript">
+	$( document ).ready( function() {
+	//console.log('ready!')
+
+	var fillYears = dhis2.report.periods;
+
+	fillYears = fillYears.sort((a,b) => b-a);
+
+	console.log(fillYears);
+
+
+
+	//var fillYears = ['2017','2018','2019','2020'];
+
+	for (var i = 0; i < fillYears.length; i++) {
+		$('#startYear').append('<option value="' + fillYears[i] + '">' + fillYears[i] + '</option>');
+	}
+
+
+	// to do on click
+
+	$('#genReportButton').on('click', setVariables);
+
+	document.title = 'Fonte: HNQIS – DHIS2';
+	//document.lastModified = 'Data de elaboração: ' + new D
+});
+
+	// show progress
+	//function showProgress() {
+	//	var p;
+	//	if ( p ){
+	//		p.prependTo('body');
+	//		p=null;
+	//	}
+	//	$('.progress-bar').css('width', 0);
+	//	$('.progress-bar').stop().animate({
+	//		width: '100%'
+	//	}, 500, function() {
+	//		setTimeout(function() {
+	//			p = $('.progress').detach();
+	//			console.log(p);
+	//		}, 1000)
+	//	});
+	//}
+
+	// Report table global vars
+	reportTablePlugin.url = "https://ao-dev.hnqis.org";
+	chartPlugin.url = "https://ao-dev.hnqis.org";
+	reportTablePlugin.loadingIndicator = true;
+	chartPlugin.loadingIndicator = true;
+	mapPlugin.url = "https://ao-dev.hnqis.org";
+
+
+	// Get the selected  variables;
+	//$('#genReportButton').on('click', setVariables);
+
+
+
+	function setVariables() {
+
+		// get variables from the form
+		var selectedMonthValue = $('#startMonth-input').val();
+		var selectedMonthName = $('#startMonth-input option:selected').text();
+
+
+		var selectedYear = $('#startYear').val();
+
+		var selectedProviceId = $('#province-select').val();
+		var selectedProviceName = $('#province-select option:selected').text();
+
+		//console.log(selectedProviceName);
+
+		// Period option
+		var dhis2Period = selectedYear+selectedMonthValue;
+
+		// Table / Chart Options
+		//var reportTable1Title = 'Tabela 1: Número de provedores supervisionados, ' + selectedMonthName + ' ' + selectedYear;
+		var reportTable1Title = 'Tabela 1: Número de provedores supervisionados'; // + selectedMonthName + ' ' + selectedYear;
+		//var chart1Title = 'Gráfico 1: Pontuação total provincial por guião de supervisão, ' + selectedMonthName + ' ' + selectedYear;
+		var chart1Title = 'Gráfico 1: Pontuação total provincial por guião de supervisão'; // + selectedMonthName + ' ' + selectedYear;
+
+		//var reportTable2Title = 'Tabela 2: Pontuação Média Guiões de Supervisão por Municípios, ' + selectedMonthName + ' ' + selectedYear;
+		var reportTable2Title = 'Tabela 2: Pontuação Média Guiões de Supervisão por Municípios'; // + selectedMonthName + ' ' + selectedYear;
+
+		//var reportTable3Title = 'Tabela 3: Pontuação Média Guiões de Supervisão por Unidades de Saúde, ' + selectedMonthName + ' ' + selectedYear;
+		var reportTable3Title = 'Tabela 3: Pontuação Média Guiões de Supervisão por Unidades de Saúde'; // + selectedMonthName + ' ' + selectedYear;
+
+		//var totalSupervisionsTitle = 'Numero total de US supervisionadas (todos guiões), ' + selectedMonthName + ' ' + selectedYear;
+		var totalSupervisionsTitle = 'Numero total de US supervisionadas (todos guiões)'; // + selectedMonthName + ' ' + selectedYear;
+
+		var dhis2MapTitle = "Mapa: TDR Malaria - Pontuação média no desempenho de TDR por município";//"TDR Malaria Pontuação meia por municipio";
+
+		var url = '../api/organisationUnits/' + selectedProviceId + '?fields=id,name&level=1';
+		var url2 = '../api/organisationUnits/' + selectedProviceId + '?fields=id,name&level=2';
+
+		
+
+		alert('Pulling report for month: ' + selectedMonthValue + '  which is ' + selectedMonthName + ' Year: ' + selectedYear + ' Province: ' + selectedProviceName + '(' + selectedProviceId + ')');
+		//});
+
+		$('#report-dimension').text(selectedProviceName + ', ' + selectedMonthName + ' ' + selectedYear);
+		$('#section1').text(reportTable1Title);
+		$('#section2').text(chart1Title);
+		$('#section3').text(reportTable2Title);
+		$('#section4').text(reportTable3Title);
+		$('#section5').text(dhis2MapTitle);
+
+		// Load OUS
+		var dhis2OrgUnits = getOUS(url);
+		var dhis2Clinics = getOUS(url2);
+
+		// create the table 1
+		var reportTable1 = {
+			el: "reportTable1",
+			columns: [{
+				dimension: "dx",
+				items: [
+					{id: "oecNFTBwY5O"},
+					{id: "mnkolRR686d"},
+					{id: "xDwZ00djF4y"},
+					{id: "ifDCZxEBKjy"},
+					{id: "ZI2M59etLIp"}
+					//{id: "Tpt01o40AaT"} The last indicator is'nt applied to providers
+				]
+			}],
+			rows: [
+				{dimension: "ou", items: dhis2OrgUnits} // dhis2OrgUnits
+			],
+			filters: [{
+				dimension: "pe",
+				//dhis2Period
+				items: [{id: dhis2Period}]
+				}],
+				//title: reportTable1Title,
+				showColTotals: true,
+				hideEmptyRows: true
+			};
+
+		//console.log(reportTable1);
+
+		//console.log(reportTable1.rows);
+
+		reportTablePlugin.load(reportTable1);
+
+		// chart 2
+
+		var chart1 = {
+			el: "chart1",
+			columns: [{
+				dimension: "dx",
+				items: [
+					{id: "zUlxy3A5ZGn"},
+					{id: "VEM0wSlneWC"},
+					{id: "nGGmu9yiBdA"},
+					{id: "CDB5fjoy2Ee"}, // newly added
+					{id: "sHcZctpoe9W"},
+					//{id: "FM4ZfEZSGgS"}, // deleted the existing one
+					{id: "CM33YGQn9Wy"},
+					{id: "mf8JxZRl3RW"} // added a new dx: program indicator  AO HNQIS QRI.0CS-100-Overall QA Score
+				]
+			}],
+			rows: [{
+				dimension: "ou", items: [{id: selectedProviceId}]
+			}],
+			filters: [{
+				dimension: "pe",
+				items: [
+					{id:  dhis2Period}
+				]
+			}],
+			//title: chart1Title,
+			type: "bar",
+			hideTitle: true,
+			//hideSubTitle: true,
+			showValues: true
+		}
+
+		//console.log(chart1);
+
+		chartPlugin.load(chart1); 
+
+		// report Table 4 : next to the chart
+		var reportTable4 = {
+			el: "reportTable4",
+			columns: [{
+				dimension: "pe",
+				items: [
+					{id: dhis2Period}
+				]
+			}],
+			rows: [{
+				dimension: "dx",
+				items: [
+					{id: "zZ6GsHpH0Od"},
+					{id: "Dx3i6pYvojJ"},
+					{id: "ozXpbpgJd0B"},
+					{id: "w8CloN9Gaa7"},
+					{id: "qAFeQRBWZVY"},
+					{id: "iDc0Q6gMw0v"},
+					{id: "x8liB3YmhN8"}  // new dx mf8JxZRl3RW
+				]
+			}],
+			filters: [{
+				dimension: "ou",
+				items: [
+					{id: selectedProviceId}
+				]
+			}],
+			showColTotals: true,
+			hideEmptyRows: true
+
+		}
+
+		reportTablePlugin.load(reportTable4);
+
+		// reportTable 2
+
+		var reportTable2 = {
+			el: "reportTable2",
+			columns: [{
+				dimension: "dx",
+				items: [
+					{id: "zUlxy3A5ZGn"},
+					{id: "VEM0wSlneWC"},
+					{id: "nGGmu9yiBdA"},
+					{id: "CDB5fjoy2Ee"},  // move to #6 FM4ZfEZSGgS -- now CDB5fjoy2Ee
+					{id: "sHcZctpoe9W"},
+					{id: "CM33YGQn9Wy"}, // move to #4 CM33YGQn9Wy
+					{id: "mf8JxZRl3RW"} // new dx
+				]
+			}],
+			rows: [{
+				dimension: "ou",
+				items: dhis2OrgUnits
+			}],
+			filters: [{
+				dimension: "pe",
+				items: [
+					{id: dhis2Period}
+				]
+			}],
+			//title: reportTable2Title,
+			showColTotals: true,
+			hideEmptyRows: true,
+			legendSet: {id: "KC4JHDAej8p"}
+		}
+
+		//console.log(reportTable2);
+		reportTablePlugin.load(reportTable2); // do not load
+
+		// report Table 3
+		var reportTable3 = {
+			el: "reportTable3",
+			columns: [{
+				dimension: "dx",
+				items: [
+					{id: "zUlxy3A5ZGn"},
+					{id: "VEM0wSlneWC"},
+					{id: "nGGmu9yiBdA"},
+					{id: "CDB5fjoy2Ee"}, // move to # 6 FM4ZfEZSGgS // now CDB5fjoy2Ee
+					{id: "sHcZctpoe9W"},
+					{id: "CM33YGQn9Wy"}, // move to # 4 CM33YGQn9Wy
+					{id: "mf8JxZRl3RW"}  // new dx
+				]
+			}],
+			rows: [{
+				dimension: "ou",
+				items: dhis2Clinics 
+			}],
+			filters: [{
+				dimension: "pe",
+				items: [
+					{id: dhis2Period}
+				]
+			}],
+			//title: reportTable3Title,
+			showColTotals: true,
+			hideEmptyRows: true,
+			hideTitle: true,
+			legendSet: {id: "KC4JHDAej8p"}
+		}
+
+		//console.log(reportTable3);
+		reportTablePlugin.load(reportTable3); 
+
+
+		// A chart to show the total supervions
+		//var totalSupervisions = {
+		//	el: "totalSupervisions",
+		//	columns: [{
+		//		dimension: "dx",
+		//		items: [
+		//			{id: "BiFRfSc4oxj"}
+		//		]
+		//	}],
+		//	rows: [{
+		//		dimension: "ou",
+		//		items: [
+		//			{id: selectedProviceId}
+		//		]
+		//	}],
+		//	filters: [{
+		//		dimension: "pe",
+		//		items: [
+		//			{id: dhis2Period}
+		//		]
+		//	}],
+			//title: totalSupervisionsTitle,
+		//	type: "gauge",
+		//	showValues: true,
+		//	hideTitle: true
+		//}
+
+		//console.log(totalSupervisions);
+
+		//chartPlugin.load(totalSupervisions);
+
+
+		// Map
+		//var dhis2Map = {
+		//	el: "malQoCMap",
+		//	columns: [{
+		//				dimension: "dx",
+		//				items: [{
+		//					id: "sHcZctpoe9W"
+		//				}]
+		//	}],
+		//	rows: [{
+		//		dimension: "ou",
+		//		items: dhis2OrgUnits
+		//	}],
+		//	filters: [{
+		//		dimension: "pe",
+		//		items: [{
+		//			id: dhis2Period
+		//		}]
+		//	}],
+			//valueType: "in",
+		//	legendSet: {id: "JnlQwggLMN7"}
+
+		//}
+
+		//mapPlugin.load(dhis2Map);
+
+		Ext.onReady( function(){
+			DHIS.getMap({
+				url: "https://ao-dev.hnqis.org",
+				el: "malQoCMap",
+				//hideLegend: true,
+				//basemap: "googlestreets",
+				//baseLayer: "googlestreets",
+				mapViews: [{
+					columns: [{
+						dimension: "dx",
+						items: [{
+							id: "sHcZctpoe9W",
+							dimensionItemType: "INDICATOR"
+						}]
+					}],
+					rows: [{
+						dimension: "ou",
+						items: [ {id: "LEVEL-4"}, {id: selectedProviceId}] //dhis2OrgUnits
+					}],
+					filters: [{
+						dimension: "pe",
+						items: [{
+							id: dhis2Period
+						}]
+					}],
+					valueType: "in",
+					labels: true,
+					layer: "thematic1", //thematic1
+					opacity: 0.9,
+					legendSet: {id: "JnlQwggLMN7"}
+				},{
+					layer: "boundary",
+					columns: [{
+						dimension: "dx",
+						items: [{
+							id: "sHcZctpoe9W",
+							dimensionItemType: "INDICATOR"
+						}]
+					}],
+					rows: [{
+						dimension: "ou",
+						items: [{id: "LEVEL-4"},{id: selectedProviceId}] //dhis2OrgUnits
+					}],
+					filters: [{
+						dimension: "pe",
+						items: [{
+							id: dhis2Period
+						}]
+					}],
+					valueType: "in",
+					labels: true,
+					//layer: "thematic1", //thematic1
+					opacity: 0.6
+				}]
+			});
+		})
+
+		
+		//var dhis2MapTest = {
+		//	url: "https://ao-dev.hnqis.org",
+		//	el: "malQoCMap",
+		//	id: "M4j7ZAc27XY"
+		//}
+
+		//DHIS.getMap(dhis2MapTest);
+
+
+		
+
+};
+
+
+function getOUS(url) {
+
+	var req = new XMLHttpRequest();
+
+	// where  to store the orgUnits
+	var dhis2OrgUnits = new Array();
+
+	req.onreadystatechange = function() {
+		if  (req.readyState == 4 && req.status == 200) {
+
+			var orgUnits = JSON.parse(req.responseText);
+				//var orgUnits = this.responseText;
+
+			//console.log(orgUnits);
+
+			for (var i = 0; i < orgUnits.organisationUnits.length; i++) {
+
+					//dhis2OrgUnits[i] = '{id: ' + orgUnits.organisationUnits[i].id + '}';
+				dhis2OrgUnits.push({
+					id: orgUnits.organisationUnits[i].id
+
+					});
+
+
+					//console.log(orgUnits.organisationUnits[i].id);
+			}
+
+		}
+	};
+
+	//var url = '../api/organisationUnits/' + selectedProviceId + '?fields=id,name&level=1';
+
+
+	//console.log('dhis2Period parsed: '+ dhis2Period);
+
+	//console.log(selectedMonthName);
+
+	req.open('GET', url, true);
+	req.send();
+
+	return dhis2OrgUnits;
+
+
+};
+
+function getOUSToSelect(url) {
+
+	var req = new XMLHttpRequest();
+
+	// where  to store the orgUnits
+	var dhis2OrgUnits = new Array();
+
+	req.onreadystatechange = function() {
+		if  (req.readyState == 4 && req.status == 200) {
+
+			var orgUnits = JSON.parse(req.responseText);
+				//var orgUnits = this.responseText;
+
+			//console.log(orgUnits);
+
+			for (var i = 0; i < orgUnits.organisationUnits.length; i++) {
+
+					//dhis2OrgUnits[i] = '{id: ' + orgUnits.organisationUnits[i].id + '}';
+				dhis2OrgUnits.push({
+					id: orgUnits.organisationUnits[i].id,
+					name: orgUnits.organisationUnits[i].name
+					});
+
+
+					//console.log(orgUnits.organisationUnits[i].id);
+			}
+
+		}
+	};
+
+
+	req.open('GET', url, true);
+	req.send();
+
+	dhis2OrgUnits.sort(function(a,b){
+		var nameA = a.name.toUpperCase();
+		var nameB = b.name.toUpperCase();
+
+		if (nameA < nameB){
+			return -1;
+		}
+
+		if (nameA > nameB){
+			return 1;
+		}
+
+		return 0;
+	})
+
+	return dhis2OrgUnits;
+
+
+};
+
+
+$( document ).ready( function() {
+	$('.header').css('color', 'black');
+});
+
+$( document ).ready( function(){
+	// Load ous to select from
+	var ousToSelectUrl = "../api/33/organisationUnitGroups/ibcEco8bkvA.json?fields=organisationUnits[id,name]";
+	var ousToSelect = getOUSToSelect(ousToSelectUrl);
+
+	for (var i = 0; i < ousToSelect.length; i++){
+		$('#province-select').append('<option value="' + ousToSelect[i].id + '">' + ousToSelect[i].name + '</option>');
+	}
+
+	//console.log(ousToSelect)
+});
+
+</script>
+
+<!-- main body -->
+	<div class="d-print-none container-fluid report-dimension">
+			<div class="row align-items-start">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<h3 class="card-title">Choose Report Options</h3>
+							<form>
+								<div class="form-row">
+									<div class="form-group col">
+										<label for="startMonth">Select Month</label>
+										<select name="startMonth-input" id="startMonth-input" class="form-control" >
+											<option value="01">Janeiro</option>
+											<option value="02">Fevereiro</option>
+											<option value="03">Março</option>
+											<option value="04">Abril</option>
+											<option value="05">Maio</option>
+											<option value="06">Junho</option>
+											<option value="07">Julho</option>
+											<option value="08">Agosto</option>
+											<option value="09">Setembro</option>
+											<option value="10">Outubro</option>
+											<option value="11">Novembro</option>
+											<option value="12">Dezembro</option>
+										</select>
+									</div>
+									<div class="form-group col">
+										<label for="startYear">Select Year</label>
+										<select name="startYear" id="startYear" class="form-control">
+										</select>
+									</div>
+									<div class="form-group col">
+										<label for="province">Select Province</label>
+										<select name="province-select" id="province-select" class="form-control">
+											<!--
+											<option value="Pfy7gorG7pR">---Angola---</option>
+											<option value="Pu5Tzt9z1ak">Província de Zaire</option>
+											<option value="BIfhhZKD1Qv">Província de Lunda-Norte</option>
+											<option value="q4ZAkSiLdsd">Província de Lunda-Sul</option>
+											<option value="H2V3Bstv3Fc">Província de Uíge</option>
+											<option value="yRqJG7DoimT">Província de Cuanza-Norte</option>
+											<option value="TFqReCyXfvb">Província de Malange</option>
+											<option value="Pgm9VeU7yuj">Província de Namibe</option>
+											-->
+										</select>
+									</div>
+								</div>
+								<!--
+								<div class="form-group col">
+									<label for="Display Settings">Display Settings</label>
+									<label><input type="checkbox" name="show cover page" value="1">Show Cover Page</label>
+								</div>
+								-->
+							</form>
+							<div class=float-right>
+								<div class=row>
+									<div class="col">
+										<button id="genReportButton" class="btn btn-primary">Generate Report</button>
+									</div>
+									<div>
+										<button id="printButton" class="btn btn-primary" value="Print" onclick="window.print()">Print</button>
+									</div>		
+								</div>	
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+
+	<div id="reportDiv" class="container-fluid report-body">
+		<!-- Add the prgress bar 
+		<div class="progress progress-striped active">
+			<div class="progress-bar"></div>
+		</div>-->
+
+
+		<div id="report-cover-page">
+		<div class="row">
+			<div class="col align-self-start" style="padding-top: 40px;">
+				<h2 class="header-cover-page"><em><u>Boletim Informativo Mensal</u></em></h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col align-self-center text-center" id="header-logo">
+				<img src="../api/documents/h6hHexSRlus/data" style="width: 162.51968504px;height: 158.03149606px;">
+				<p class="header-cover-page lead" style="padding-top: 10px">
+					REPÚBLICA DE ANGOLA </br>
+					MINISTÉRIO DA SAÚDE </br>
+					DIRECÇÃO NACIONAL DE SAÚDE PÚBLICA</br>
+					PROGRAMA NACIONAL DE CONTROLO DA MALÁRIA</br>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col align-self-center text-center">
+				<h1 id="report-title" class="header-cover-page">Manuseio de Casos de Malária</h1>	
+			</div>
+		</div>
+		<div class="row">
+			<div class="col align-self-center text-center">
+				<h3 class="header-cover-page">Publicado pelo Programa Nacional de Controlo da Malária</h3>
+			<!--	<p class="header-cover-page">(Registrado como um boletim na ...)</p> -->
+			</div>
+		</div>
+		<div class="row" style="padding-top: 20px;">
+			<div class="col border border-dark border-right-0 border-left-0 pt-1 pb-1 border-1">
+				<p id="report-dimension" class="header-cover-page" style="text-align: center;">Março 2020</p>
+			</div>
+		</div>
+
+		<div id="container">
+			<h1 id="about-this-title" class="header-cover-page">Sobre este documento</h1>
+			<p id="about-this" class="lead header-cover-page">
+				O Ministério da Saúde (MINSA), em colaboração com o projeto Saúde para Todos, está a implementar uma ferramenta de supervisão digital para malária, em unidades de saúde de seis províncias com alta incidência de malária em Angola: Cuanza Norte, Lunda Norte, Lunda Sul, Malanje, Uíge e Zaire. A ferramenta digital usa listas de verificação, alinhadas aos padrões médicos de Angola para avaliar a qualidade dos cuidados prestados em gestão de casos de malária, a disponibilidade de insumos e gestão de dados nas unidades sanitárias. Isso permite dar feedback imediato aos provedores de saúde, de acordo com o seu desempenho durante a avaliação e desenvolver planos de treinamento e supervisão para provedores e unidades de saúde com menor desempenho, priorizando áreas especificas onde precisam melhorar. A informação também poderá ser mostrada em tempo real na plataforma de DHIS2 do MINSA, para visualização imediata a nível provincial e central. A apresentação a seguir é um resumo de indicadores chave do mês anterior a edição deste boletim, com o intuito de mostrar em poucas tabelas/gráficos o nível de desempenho no manejo de casos de malária e tomar ações pertinentes. Uma lista mais detalhada de indicadores, poderá ser em breve consultado direitamente na plataforma DHIS2, com acesso desde qualquer sítio com internet.
+			</p>
+			
+		</div>
+
+		<div class="row w-100" id="footer">
+			<div class="col">
+				<img src="../api/documents/H7MAbh2jHMm/data" style="width: 289.51181102px;height: 72.188976378px;">
+			</div>
+		
+			<div class="col">
+				<div style="width: 210px !important"></div>
+				<!--<img src="../api/documents/HUe4n63MxwP/data" style="width: 50px;height: 50px;">-->
+			</div>
+		
+			<div class="col border-right-0">
+				<img src="../api/documents/hrzYTrT52QU/data" style="width: 204.09448819px;height: 72.188976378px;">
+			</div>
+		</div>
+
+		</div>
+
+
+		<p style="page-break-after: always;"></p>
+		<!-- A new page --->
+
+		<!-- begin with the map -->
+
+		<div class="section">
+			<div class="section-title border border-dark border-right-0 border-left-0 pt-1  pb-1 border-2">
+				<h3 class="header-cover-page" id="section5"></h3>
+			</div>
+			<div id="malQoCMap" style="width:930px;height:800px;"></div> <!-- style="width:800px;height:357px"; -->
+			<p class="lead2 header-cover-page">Nota: Aos municípios em brancos, não foram feitas nenhuma supervisão em TDR ou o guião ainda não foi enviado.</p>
+		</div>
+
+		<div class="section" style="width:930px;height:400px;">
+			<div class="section-title border border-dark border-right-0 border-left-0 pt-1 pb-1 border-2">
+				<h3 class="header-cover-page" id="section1"></h3>
+			</div>
+			<div id="reportTable1"></div>
+			<p class="lead2 header-cover-page">Nota:  A tabela de número de provedores de saúde, temos de ter atenção na possibilidade de termos duplicação de provedores, devido ao facto de não termos a opção de escolha do nome do provedor, os nomes dos provedores são escritos manualmente em cada supervisão feita.</p>
+		</div>
+		
+		<!-- A new page --->
+		<p style="page-break-after: always;"></p>
+
+		<div class="section">
+			<div class="section-title border border-dark border-right-0 border-left-0 pt-1 pb-1 border-2">
+				<h3 class="header-cover-page" id="section2"></h3>
+			</div>
+			<div class="row">
+				<div class="clearfix">
+					<div id="chart1" class="col-8"></div>
+				</div>
+				<div id="reportTable4" class="col-4" ></div>
+			</div>
+		</div>
+
+		<div class="section">
+			<div class="section-title border border-dark border-right-0 border-left-0 pt-1 pb-1 border-2">
+				<h3 class="header-cover-page" id="section3"></h3>
+			</div>
+			<div id="reportTable2"></div>
+			<div class="hnqis-tableLegend col-4">
+				<table>
+					<thead>
+						<tr>
+						<th colspan="2" scope="col">Legenda Tabela</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>>= 80</td>
+							<td bgcolor="#6FE64C" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>= 60 - 79</td>
+							<td bgcolor="#FEFF7F" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>= 0-59</td>
+							<td bgcolor="#EA3424" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>Guião não preenchido/Não enviado</td>
+							<td></td>
+						</tr>
+					</tbody>			
+				</table>
+			</div>
+		</div>
+
+		<!-- A new page --->
+		<p style="page-break-after: always;"></p>
+
+		<div class="section">
+			<div class="section-title border border-dark border-right-0 border-left-0 pt-1 pb-1 border-2">
+				<h3 class="header-cover-page" id="section4"></h3>
+			</div>
+			<div id="reportTable3"></div>
+			<div class="hnqis-tableLegend col-4">
+				<table>
+					<thead>
+						<tr>
+						<th colspan="2" scope="col">Legenda Tabela</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>>= 80</td>
+							<td bgcolor="#6FE64C" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>= 60 - 79</td>
+							<td bgcolor="#FEFF7F" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>= 0-59</td>
+							<td bgcolor="#EA3424" style="width: 25px;"></td>
+						</tr>
+						<tr>
+							<td>Guião não preenchido/Não enviado</td>
+							<td></td>
+						</tr>
+					</tbody>			
+				</table>
+			</div> <!--
+			<div id="totalSupervisions"></div>	-->
+		</div>
+		
+
+	</div>
+
+
+<!--	
+			
+<div class="div.page-layout"></div>
+-->
+
+<!--
+
+		<h2 class="header-cover-page" id="report-name">Boletim Informativo Mensal</h2>
+		<div id="header-logo">
+			<img src="./img/angola_logo.png" align="middle" style="width: 128px;height: 128px;">
+			<p class="header-cover-page">
+			REPÚBLICA DE ANGOLA <br>
+			MINISTÉRIO DA SAÚDE <br>
+			DIRECÇÃO NACIONAL DE SAÚDE PÚBLICA <br>
+			PROGRAMA NACIONAL DE CONTROLO DAMALÁRIA
+			</p>
+		</div>
+		<div id="header-title">
+			<h1 class="header-cover-page" id="report-title">Manuseio de Casos de Malária</h1>
+			<h3 class="header-cover-page" id="report-subtitle">Published by Authority of the Republic of Angola</h3>
+			<p class="header-cover-page">(Registered as a newsletter at the ...)</p>
+		</div>
+		<div id="report-subtitle-main">
+			<p id="report-dimension" class="header-cover-page" style="text-align: center;">Março 2020</p>
+		</div>
+		
+		<div id="container">
+				
+			
+		</div>
+
+
+		
+		<div id="footer">
+			<div id="footer-logo">
+				<img src="./img/usaid_logo.png" align="left" style="width: 300px;height: 50px;">
+				<img src="./img/psi-angola.jpeg" align="middle" style="width: 50px;height: 50px;padding-left: 20%;">
+				<img src="./img/saude_logo.png" align="right" style="width: 200px;height: 50px;">
+			</div>
+			</div>
+	</div>
+
+-->
+
+		
+	
+
+
+<!--
+	<footer id="footer" style="width: 210mm">
+		<div id="footer-logo">
+			<img src="./img/usaid_logo.png" align="left" style="width: 300px;height: 50px;">
+
+			<img src="./img/psi-angola.jpeg" align="middle" style="width: 50px;height: 50px;padding-left: 20%;">
+
+			<img src="./img/saude_logo.png" align="right" style="width: 200px;height: 50px;">
+		</div>
+	</footer>
+
+-->
+
+
+
+
